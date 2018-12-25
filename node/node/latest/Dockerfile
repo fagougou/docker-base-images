@@ -9,8 +9,7 @@ WORKDIR /app
 
 ONBUILD ADD ["package.json", "package-lock.json", "/tmp/"]
 
-ONBUILD RUN cd /tmp && \
-    npm install --production --silent && \
+ONBUILD RUN cd /tmp && npm install --production --silent
 
 ONBUILD RUN mv /tmp/node_modules /app/
 
