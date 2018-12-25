@@ -10,15 +10,13 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-ONBUILD ADD package.json /tmp/package.json
+ONBUILD ADD ["package.json", "package-lock.json", "/tmp/"]
 
 ONBUILD RUN cd /tmp && \
     npm install --silent --production && \
     npm install chalk
 
 ONBUILD RUN mv /tmp/node_modules /app
-
-ONBUILD WORKDIR /app
 
 ONBUILD ADD . .
 

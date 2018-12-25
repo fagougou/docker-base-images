@@ -19,4 +19,4 @@ ONBUILD ADD . .
 
 ONBUILD RUN npm run build && rm -rf /app/client
 
-CMD ["node", "server/bin/www"]
+CMD ["npm", "start"]
