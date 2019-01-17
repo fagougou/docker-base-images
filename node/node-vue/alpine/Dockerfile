@@ -10,7 +10,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-ONBUILD ADD ["package.json", "package-lock.json", "/tmp/"]
+ONBUILD ADD ["package.json", "/tmp/"]
 
 ONBUILD RUN cd /tmp && \
     npm install --silent --production && \
@@ -22,6 +22,6 @@ ONBUILD ADD . .
 
 ONBUILD RUN npm run build && rm -rf /app/client
 
-RUN apk del make gcc g++ python tzdata
+ONBUILD RUN apk del make gcc g++ python tzdata
 
 CMD ["npm", "start"]
