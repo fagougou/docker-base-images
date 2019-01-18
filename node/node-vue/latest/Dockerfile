@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:lts
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone

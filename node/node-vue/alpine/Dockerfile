@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:lts-alpine
 
 RUN apk update && \
     apk add --no-cache tzdata make gcc g++ python bash && \
@@ -10,7 +10,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-ONBUILD ADD ["package.json", "/tmp/"]
+ONBUILD ADD ["package.json", "package-lock.json", "/tmp/"]
 
 ONBUILD RUN cd /tmp && \
     npm install --silent --production && \
