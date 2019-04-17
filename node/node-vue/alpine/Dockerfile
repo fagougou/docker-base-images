@@ -10,7 +10,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-ONBUILD ADD ["package.json", "package-lock.json", "/tmp/"]
+ONBUILD ADD "package.json" "/tmp/"
 
 ONBUILD RUN cd /tmp && \
     npm install --silent --production && \
