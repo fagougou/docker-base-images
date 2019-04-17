@@ -10,6 +10,8 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
+ADD ../../.npmrc .npmrc
+
 ONBUILD ADD "package.json" "/tmp/"
 
 ONBUILD RUN cd /tmp && \
