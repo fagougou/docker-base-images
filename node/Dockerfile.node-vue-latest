@@ -7,7 +7,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-ADD .npmrc .npmrc
+COPY .npmrc /root/.npmrc
 
 ONBUILD ADD "package.json" "/tmp/"
 
@@ -17,7 +17,7 @@ ONBUILD RUN cd /tmp && \
 
 ONBUILD RUN mv /tmp/node_modules /app/
 
-ONBUILD ADD . .
+ONBUILD COPY . .
 
 ONBUILD RUN npm run build && rm -rf /app/client
 

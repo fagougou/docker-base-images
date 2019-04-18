@@ -10,7 +10,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-ADD .npmrc .npmrc
+COPY .npmrc /root/.npmrc
 
 ONBUILD ADD "package.json" "/tmp/"
 
@@ -19,7 +19,7 @@ ONBUILD RUN cd /tmp && \
 
 ONBUILD RUN mv /tmp/node_modules /app/
 
-ONBUILD ADD . .
+ONBUILD COPY . .
 
 RUN apk del make gcc g++ python tzdata
 
