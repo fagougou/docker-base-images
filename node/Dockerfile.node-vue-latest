@@ -3,13 +3,11 @@ FROM node:lts
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone
 
-ADD .npmrc .npmrc
-
-RUN npm config set registry https://red-nexus-repo.fagougou-law.com/repository/npm-group
-
 RUN mkdir -p /app
 
 WORKDIR /app
+
+ADD .npmrc .npmrc
 
 ONBUILD ADD "package.json" "/tmp/"
 
