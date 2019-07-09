@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
 RUN apk update && \
-    apk add --no-cache tzdata make gcc g++ python bash && \
+    apk add --no-cache tzdata make gcc g++ python bash git && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" >  /etc/timezone && \
     date
@@ -21,7 +21,7 @@ ONBUILD RUN mv /tmp/node_modules /app/
 
 ONBUILD COPY . .
 
-RUN apk del make gcc g++ python tzdata
+ONBUILD RUN apk del make gcc g++ python tzdata git
 
 CMD ["npm", "start"]
 

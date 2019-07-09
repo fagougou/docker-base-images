@@ -12,10 +12,10 @@ WORKDIR /app
 
 COPY .npmrc /root/.npmrc
 
-ONBUILD ADD "package.json" "/tmp/"
+ONBUILD COPY "package.json" "/tmp/"
 
 ONBUILD RUN cd /tmp && \
-    npm install --production && \
+    npm install --only=production && \
     npm install chalk
 
 ONBUILD RUN mv /tmp/node_modules /app
